@@ -1,0 +1,23 @@
+services:
+  rpi-mqtt-monitor:
+    image: ghcr.io/YOUR_GH_USERNAME/rpi-mqtt-monitor:latest
+    container_name: rpi-mqtt-monitor
+    restart: unless-stopped
+
+    privileged: true
+    network_mode: host
+
+    volumes:
+      # Host system metrics
+      - /proc:/proc:ro
+      - /sys:/sys:ro
+
+      # Config file
+      - /etc/rpi-mqtt-monitor/config.py:/app/src/config.py:ro
+
+      # Allow reboot/shutdown to affect the host
+      - /sbin/reboot:/sbin/reboot
+      - /sbin/shutdown:/sbin/shutdown
+
+      # Passwordless sudo for reboot/shutdown
+      - /etc/sudoers.d/rpi-mqtt-monitor:/etc/sudoers.d/rpi-mqtt-monitor:ro
