@@ -1,6 +1,6 @@
 services:
   rpi-mqtt-monitor:
-    image: ghcr.io/YOUR_GH_USERNAME/rpi-mqtt-monitor:latest
+    image: ghcr.io/samheard/rpi-mqtt-monitor:latest
     container_name: rpi-mqtt-monitor
     restart: unless-stopped
 
