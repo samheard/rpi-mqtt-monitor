@@ -12,7 +12,7 @@ WORKDIR /app
 # Only copy what the container needs
 COPY requirements.txt /app/requirements.txt
 COPY src/ /app/src/
-COPY config.py /app/src/config.py  # fallback config baked into image
+# COPY config.py /app/src/config.py  # fallback config baked into image - it is already in the /app/src
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r /app/requirements.txt
