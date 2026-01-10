@@ -8,16 +8,18 @@ services:
     network_mode: host
 
     volumes:
-      # Host system metrics
+      # Host system metrics (read-only)
       - /proc:/proc:ro
       - /sys:/sys:ro
 
-      # Config file
-      - /etc/rpi-mqtt-monitor/config.py:/app/src/config.py:ro
+      # Config file (Ansible-managed)
+      - /home/support/applications/system_monitor/config.py:/app/src/config.py:ro
 
-      # Allow reboot/shutdown to affect the host
+      # Allow reboot to affect the host
       - /sbin/reboot:/sbin/reboot
+
+      # Shutdown is disabled in config, but mount is harmless if you want to keep it
       - /sbin/shutdown:/sbin/shutdown
 
-      # Passwordless sudo for reboot/shutdown
+      # Passwordless sudo for reboot
       - /etc/sudoers.d/rpi-mqtt-monitor:/etc/sudoers.d/rpi-mqtt-monitor:ro
