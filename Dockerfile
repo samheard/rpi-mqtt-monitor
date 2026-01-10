@@ -1,19 +1,21 @@
 FROM python:3.12-alpine
 
-# Install build tools only if install.sh needs them
+# Install build tools needed for psutil
 RUN apk add --no-cache \
-    bash \
     gcc \
     musl-dev \
-    linux-headers
+    linux-headers \
+    sudo
 
 WORKDIR /app
 
-# Copy the entire project
-COPY . /app
+# Only copy what the container needs
+COPY requirements.txt /app/requirements.txt
+COPY src/ /app/src/
+COPY config.py /app/src/config.py  # fallback config baked into image
 
-# Run the project's installer
-RUN chmod +x install.sh && ./install.sh
+# Install Python dependencies
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Default command
-CMD ["python3", "rpi-mqtt-monitor.py"]
+# Default command: run the monitor script
+CMD ["python3", "/app/src/rpi-cpu2mqtt.py"]
