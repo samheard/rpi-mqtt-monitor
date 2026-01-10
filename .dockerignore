@@ -1,0 +1,41 @@
+# Version control
+.git
+.gitignore
+
+# Documentation and images
+README.md
+LICENSE
+docs/
+images/
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# Local development files
+*.pyc
+__pycache__/
+*.log
+*.tmp
+
+# Host-only scripts
+install.sh
+*.sh
+
+# Docker orchestration files
+docker-compose.yaml
+docker-compose.yml
+*.env
+
+# Ansible files
+ansible/
+*.yml
+*.yaml
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Example config (not needed)
+src/config.py.example
