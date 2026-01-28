@@ -28,4 +28,4 @@ version = "docker-build"
 discovery_messages = True
 
 # MQTT discovery prefix (default in example)
-mqtt_discovery_prefix = "homeassistant"
+mqtt_discovery_prefix = "computer"
