@@ -1,5 +1,5 @@
 # MQTT settings
-mqtt_host = "192.168.1.10"
+mqtt_host = "127.0.0.0"
 mqtt_user = ""
 mqtt_password = ""
 mqtt_port = 1883
