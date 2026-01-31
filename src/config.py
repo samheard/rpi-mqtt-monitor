@@ -24,6 +24,12 @@ interval = 120
 # Version label
 version = "docker-build"
 
+# External sensors
+ext_sensors = False
+
+
+
+
 # Discovery messages enabled (default in example)
 discovery_messages = True
 
